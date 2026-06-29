@@ -73,15 +73,18 @@ export default function ManageBlogs() {
   }
 
   const addLink = () => {
-    setForm({ ...form, links: [...form.links, { url: '', label: '' }] })
+    const links = form.links || []
+    setForm({ ...form, links: [...links, { url: '', label: '' }] })
   }
 
   const removeLink = (i) => {
-    setForm({ ...form, links: form.links.filter((_, idx) => idx !== i) })
+    const links = form.links || []
+    setForm({ ...form, links: links.filter((_, idx) => idx !== i) })
   }
 
   const setLink = (i, key, value) => {
-    const updated = form.links.map((link, idx) =>
+    const links = form.links || []
+    const updated = links.map((link, idx) =>
       idx === i ? { ...link, [key]: value } : link
     )
     setForm({ ...form, links: updated })
@@ -149,7 +152,7 @@ export default function ManageBlogs() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Related Links</label>
                 <div className="flex flex-col gap-2">
-                  {form.links.map((link, i) => (
+                  {(form.links || []).map((link, i) => (
                     <div key={i} className="flex items-center gap-2">
                       <input
                         type="url"
