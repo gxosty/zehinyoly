@@ -1,0 +1,25 @@
+[project]
+name = "zehinyoly-backend"
+version = "0.1.0"
+description = "Zehin Yoly Education Center API"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "sqlalchemy",
+    "psycopg2-binary",
+    "python-dotenv",
+    "alembic",
+    "bcrypt",
+    "python-jose[cryptography]",
+    "python-multipart",
+    "pydantic-settings",
+    "pillow>=12.2.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*", "app.*"]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
