@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const BASE = 'http://localhost:8000'
-export const LOGO_URL = `${BASE}/static/icon.jpg`
+const BASE = import.meta.env.VITE_API_BASE_URL || ''
+export const LOGO_URL = BASE ? `${BASE}/static/icon.jpg` : '/static/icon.jpg'
 
 export function imgUrl(path) {
   if (!path) return ''

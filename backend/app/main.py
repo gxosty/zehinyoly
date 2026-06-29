@@ -6,6 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
+from app.config import settings
 from app.database import engine, Base, SessionLocal
 from app.routes import auth, courses, blogs
 from app.admin import courses as admin_courses, blogs as admin_blogs, uploads as admin_uploads
@@ -13,9 +14,11 @@ from app.routes.auth import seed_admin
 
 app = FastAPI(title="Zehin Yoly API")
 
+origins = settings.CORS_ORIGINS.split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
