@@ -8,7 +8,7 @@ const locales = ['en', 'ru', 'tk']
 
 const emptyLang = () => ({ en: '', ru: '', tk: '' })
 
-const emptyForm = { title: emptyLang(), content: emptyLang(), image_url: '' }
+const emptyForm = { title: emptyLang(), content: emptyLang(), image_url: '', links: [] }
 
 export default function ManageBlogs() {
   const [posts, setPosts] = useState([])
